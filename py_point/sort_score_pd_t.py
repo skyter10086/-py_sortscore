@@ -11,7 +11,7 @@ pd.set_option('display.max_rows', 25)
 
 
 df = pd.read_excel(r'C:\Users\Administrator\1.xls')
-#df['rank1'] = df['score'].rank(method='min', ascending=False)
+df['rank'] = df['score'].rank(method='min', ascending=False)
 
 def le_100(x):
     return 5000 - (x - 1) * 6
@@ -51,9 +51,9 @@ def get_point(x):
 df['point'] = df['rank'].apply(get_point)
 
 df.sort_values(['class','score'],ascending=[1,0],inplace=True)
-grouped_A = df[df['class'].isin([308, 309,310,311,307,316,317,318,315,314,321,320,319,313,312])].groupby(['class']).head(75)
+grouped_A = df[df['class'].isin([316,315,314,321,320,319])].groupby(['class']).head(70)
 #print(grouped_A)
-grouped_B = df[df['class'].isin([325, 326, 327, 328])].groupby(['class']).head(75)
+grouped_B = df[df['class'].isin([310,311,307,308,309,325, 326, 327, 328])].groupby(['class']).head(60)
 
 #class_217 = df[df['class'] == 217]
 #print(class_217['point'].mean())
